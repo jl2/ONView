@@ -1,0 +1,5 @@
+This is a quick project to view Rhino .3dm files.
+
+The two goals of the project are:
+* Learn a little about the OpenNurbs API
+* Create a cross-platform 3dm file viewer
