@@ -23,6 +23,9 @@
 
 #include "onwidget.h"
 
+#include "opennurbs.h"
+
+
 ONWidget::ONWidget(QWidget*) : timerId(0) {
     QGLFormat qf = QGLFormat(QGL::DoubleBuffer | QGL::DepthBuffer | QGL::SampleBuffers);
     qf.setSampleBuffers(2);

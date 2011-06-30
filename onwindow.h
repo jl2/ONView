@@ -41,6 +41,7 @@ public:
     ~ONWindow();
 
 private slots:
+    void openFile();
     void about();
     void startTimer();
 
@@ -56,6 +57,7 @@ private:
     QAction *aboutAction;
     QAction *aboutQtAction;
     QAction *quitAction;
+    QAction *openAction;
   
     QAction *timeAction;
   

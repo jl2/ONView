@@ -24,6 +24,8 @@
 
 #include "onwindow.h"
 
+#include "opennurbs.h"
+
 ONWindow::ONWindow() : QMainWindow(), onwid(0) {
   
     std::srand(std::time(0));
@@ -64,10 +66,28 @@ ONWindow::~ONWindow() {
     delete helpMenu;
 }
 
+void ONWindow::openFile() {
+    QString fileName =
+        QFileDialog::getOpenFileName(this,
+                                     tr("Choose an input file..."),
+                                     tr("."),
+                                     tr("OpenNurbs File (*.3dm);;All Files (*)"));
+    if (fileName == tr("")) {
+        return;
+    }
+}
+
 /*!
   Initializes all of the QActions used by the game
 */
 void ONWindow::createActions() {
+    // Open
+    openAction = new QAction(tr("Open"), this);
+    openAction->setIcon(QIcon(":/images/open.png"));
+    openAction->setShortcut(tr("Ctrl+O"));
+    openAction->setStatusTip(tr("Open..."));
+    connect(openAction, SIGNAL(triggered()), this, SLOT(openFile()));
+    
     // About
     aboutAction = new QAction(tr("About"), this);
     aboutAction->setIcon(QIcon(":/images/about.png"));
@@ -97,7 +117,10 @@ void ONWindow::createActions() {
 */
 void ONWindow::createMenus() {
     // File menu
+    
     fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(openAction);
+    fileMenu->addSeparator();
     fileMenu->addAction(quitAction);
 
     // Help menu
