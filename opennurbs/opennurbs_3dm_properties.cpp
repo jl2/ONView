@@ -57,15 +57,16 @@ int ON_3dmRevisionHistory::NewRevision()
   }
   m_last_edit_time = current_time;
 
-#if defined(ON_OS_WINDOWS)  
-  // use Windows ::GetUserNameW() to get current user name
-  wchar_t current_user[512];
-  memset( current_user, 0, sizeof(current_user) );
-  ULONG len = 510;
-  if( !::GetUserNameW(current_user,&len) )
-    current_user[0] = 0;
-  m_sLastEditedBy = current_user;
-#endif
+// #if defined(ON_OS_WINDOWS)  
+//   // use Windows ::GetUserNameW() to get current user name
+  // wchar_t *current_user
+  
+//   memset( current_user, 0, sizeof(current_user) );
+//   ULONG len = 510;
+//   if( !::GetUserNameW(current_user,&len) )
+//     current_user[0] = 0;
+  m_sLastEditedBy = L"whatever";
+// #endif
 
   if ( m_revision_count == 0 ) {
     m_sCreatedBy = m_sLastEditedBy;

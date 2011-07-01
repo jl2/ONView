@@ -11,6 +11,8 @@ INCLUDEPATH += . opennurbs opennurbs/zlib
 
 QT += opengl
 
+win32:LIBS += Rpcrt4.lib uuid.lib
+
 # Input
 HEADERS += onwidget.h \
            onwindow.h \
